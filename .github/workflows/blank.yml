@@ -26,3 +26,4 @@ jobs:
           pwd
           ls -la
           uname -a
+          mkdir avinash
