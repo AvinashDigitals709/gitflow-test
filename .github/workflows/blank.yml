@@ -27,3 +27,4 @@ jobs:
           ls -la
           uname -a
           mkdir avinash
+          ls -la
