@@ -1,0 +1,28 @@
+name: Remote SSH Basic Commands
+
+on:
+  workflow_dispatch:   # allows manual trigger from GitHub UI
+  push:
+    branches:
+      - main           # runs automatically when you push to main
+
+jobs:
+  ssh-basic:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Run Basic SSH Commands
+      uses: appleboy/ssh-action@v1.1.0
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          echo "✅ Connected to remote server!"
+          whoami
+          pwd
+          ls -la
+          uname -a
